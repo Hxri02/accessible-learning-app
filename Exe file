@@ -1,0 +1,15 @@
+# Step 1: Check Python is installed
+python --version
+# or
+python3 --version
+
+# Step 2: Navigate to project folder
+cd accessible-learning-app
+
+# Step 3: Start the server
+python -m http.server 8000
+# or for Python 2:
+python -m SimpleHTTPServer 8000
+
+# Step 4: Open in browser
+# Go to: http://localhost:8000
