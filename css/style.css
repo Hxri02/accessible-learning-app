@@ -1,0 +1,341 @@
+/* ============================================
+   Accessible Learning App — Stylesheet
+   Author : Hariharan J
+   College : Prathyusha Engineering College
+   Year   : 2023–2024
+   ============================================ */
+
+/* ── Reset & Root Variables ─────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --audio-light : #E1F5EE;
+  --audio-mid   : #1D9E75;
+  --audio-dark  : #085041;
+  --vib-light   : #EEEDFE;
+  --vib-mid     : #534AB7;
+  --vib-dark    : #26215C;
+  --bg          : #F7F6F2;
+  --surface     : #FFFFFF;
+  --text        : #1A1A1A;
+  --text-muted  : #666660;
+  --border      : rgba(0, 0, 0, 0.09);
+  --radius      : 16px;
+  --radius-sm   : 10px;
+}
+
+/* ── Base ───────────────────────────────────── */
+body {
+  font-family: 'Nunito', sans-serif;
+  background: var(--bg);
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 24px 16px 40px;
+  color: var(--text);
+}
+
+.app {
+  width: 100%;
+  max-width: 520px;
+}
+
+/* ── Header ─────────────────────────────────── */
+.header {
+  text-align: center;
+  padding: 28px 0 20px;
+}
+
+.app-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 18px;
+  background: linear-gradient(135deg, var(--audio-light) 40%, var(--vib-light));
+  margin: 0 auto 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border);
+}
+
+.header h1 {
+  font-family: 'Baloo 2', cursive;
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 6px;
+  letter-spacing: -0.3px;
+}
+
+.header p {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.55;
+  max-width: 360px;
+  margin: 0 auto;
+}
+
+/* ── Mode Selection ─────────────────────────── */
+.mode-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin: 18px 0 14px;
+}
+
+.mode-btn {
+  padding: 16px 12px;
+  border-radius: var(--radius);
+  border: 2px solid var(--border);
+  background: var(--surface);
+  cursor: pointer;
+  text-align: center;
+  transition: border-color 0.18s, background 0.18s, transform 0.1s;
+  user-select: none;
+}
+
+.mode-btn:hover  { border-color: rgba(0, 0, 0, 0.18); }
+.mode-btn:active { transform: scale(0.98); }
+
+.mode-btn.active-audio     { border-color: var(--audio-mid); background: var(--audio-light); }
+.mode-btn.active-vibration { border-color: var(--vib-mid);   background: var(--vib-light);   }
+
+.mode-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin: 0 auto 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon-audio     { background: #C6EDE0; }
+.icon-vibration { background: #D8D6F9; }
+
+.mode-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 3px;
+}
+
+.mode-desc {
+  font-size: 12px;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+
+/* ── Lesson Tabs ────────────────────────────── */
+.tab-row {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.tab {
+  padding: 7px 18px;
+  border-radius: 30px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1.5px solid var(--border);
+  background: var(--surface);
+  color: var(--text-muted);
+  font-family: 'Nunito', sans-serif;
+  transition: all 0.15s;
+}
+
+.tab:hover          { border-color: rgba(0, 0, 0, 0.2); color: var(--text); }
+.tab.active-t       { background: var(--audio-light); border-color: var(--audio-mid); color: var(--audio-dark); }
+.tab.active-t-vib   { background: var(--vib-light);   border-color: var(--vib-mid);   color: var(--vib-dark);   }
+
+/* ── Lesson Area ────────────────────────────── */
+.lesson-area {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 22px 20px 18px;
+  margin: 0 0 12px;
+}
+
+.lesson-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.7px;
+  margin-bottom: 14px;
+}
+
+/* ── Progress Dots ──────────────────────────── */
+.progress-row {
+  display: flex;
+  gap: 7px;
+  flex-wrap: wrap;
+  margin-bottom: 18px;
+}
+
+.prog-dot {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: #EBEBEB;
+  border: 1.5px solid #D8D8D8;
+  cursor: pointer;
+  transition: background 0.15s, transform 0.1s;
+}
+
+.prog-dot:hover              { transform: scale(1.25); }
+.prog-dot.done-audio         { background: var(--audio-mid); border-color: var(--audio-dark); }
+.prog-dot.done-vibration     { background: var(--vib-mid);   border-color: var(--vib-dark);   }
+.prog-dot.current            { border-width: 2px; border-color: #333; transform: scale(1.2); }
+
+/* ── Big Letter Display ─────────────────────── */
+.big-letter {
+  text-align: center;
+  padding: 20px 0 14px;
+}
+
+.big-letter span {
+  font-family: 'Baloo 2', cursive;
+  font-size: 100px;
+  font-weight: 700;
+  line-height: 1;
+  display: block;
+  transition: color 0.2s;
+}
+
+.big-letter span.audio-color { color: var(--audio-mid); }
+.big-letter span.vib-color   { color: var(--vib-mid);   }
+
+.big-letter .word {
+  font-size: 16px;
+  color: var(--text-muted);
+  margin-top: 8px;
+  font-weight: 500;
+}
+
+/* ── Vibration Pattern Dots ─────────────────── */
+.vib-pattern {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  align-items: center;
+  margin: 10px 0;
+  min-height: 32px;
+}
+
+.vib-dot {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #E0E0E0;
+  border: 1.5px solid #CCC;
+  transition: background 0.08s, transform 0.08s;
+}
+
+.vib-dot.active {
+  background: var(--vib-mid);
+  border-color: var(--vib-dark);
+  transform: scale(1.5);
+}
+
+/* ── Status Bar ─────────────────────────────── */
+.status-bar {
+  text-align: center;
+  font-size: 13px;
+  color: var(--text-muted);
+  min-height: 22px;
+  margin: 10px 0 4px;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.status-bar.go  { color: var(--audio-dark); }
+.status-bar.vib { color: var(--vib-dark);   }
+
+/* ── Control Buttons ────────────────────────── */
+.btn-row {
+  display: flex;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.btn-row button {
+  flex: 1;
+  padding: 11px 8px;
+  border-radius: var(--radius-sm);
+  border: 1.5px solid var(--border);
+  background: var(--bg);
+  color: var(--text);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: 'Nunito', sans-serif;
+  transition: background 0.15s, border-color 0.15s, transform 0.1s;
+}
+
+.btn-row button:hover  { background: #EEEEE8; }
+.btn-row button:active { transform: scale(0.97); }
+
+.btn-play {
+  border-color: var(--audio-mid) !important;
+  color: var(--audio-dark) !important;
+  background: var(--audio-light) !important;
+}
+.btn-play:hover     { background: #C6EDE0 !important; }
+
+.btn-play-vib {
+  border-color: var(--vib-mid) !important;
+  color: var(--vib-dark) !important;
+  background: var(--vib-light) !important;
+}
+.btn-play-vib:hover { background: #D8D6F9 !important; }
+
+/* ── Score Cards ────────────────────────────── */
+.score-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.score-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 12px 8px;
+  text-align: center;
+}
+
+.score-card .val {
+  font-family: 'Baloo 2', cursive;
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1;
+}
+
+.score-card .lbl {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-top: 4px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+/* ── Footer ─────────────────────────────────── */
+.footer {
+  text-align: center;
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-top: 18px;
+  line-height: 1.5;
+}

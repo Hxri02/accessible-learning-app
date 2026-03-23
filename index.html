@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Accessible Learning App</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&family=Baloo+2:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+<div class="app">
+
+  <div class="header">
+    <div class="app-icon">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z" fill="#C6EDE0"/>
+        <path d="M9 9l6 3-6 3V9z" fill="#085041"/>
+        <circle cx="18" cy="7" r="3" fill="#D8D6F9"/>
+        <path d="M17 7h2M18 6v2" stroke="#534AB7" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <h1>Accessible Learning App</h1>
+    <p>Learn alphabets, numbers & words through sound or vibration — for differently abled learners</p>
+  </div>
+
+  <div class="mode-row">
+    <div class="mode-btn active-audio" id="btn-audio" onclick="setMode('audio')">
+      <div class="mode-icon icon-audio">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#085041" stroke-width="2" stroke-linecap="round">
+          <path d="M11 5L6 9H2v6h4l5 4V5z"/>
+          <path d="M19.07 4.93a10 10 0 0 1 0 14.14"/>
+          <path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
+        </svg>
+      </div>
+      <div class="mode-title">Audio Mode</div>
+      <div class="mode-desc">For visually impaired — learn by listening</div>
+    </div>
+    <div class="mode-btn" id="btn-vibration" onclick="setMode('vibration')">
+      <div class="mode-icon icon-vibration">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#26215C" stroke-width="2" stroke-linecap="round">
+          <rect x="7" y="2" width="10" height="20" rx="2"/>
+          <line x1="2" y1="8"  x2="5" y2="8"/>
+          <line x1="2" y1="12" x2="5" y2="12"/>
+          <line x1="2" y1="16" x2="5" y2="16"/>
+          <line x1="19" y1="8"  x2="22" y2="8"/>
+          <line x1="19" y1="12" x2="22" y2="12"/>
+          <line x1="19" y1="16" x2="22" y2="16"/>
+        </svg>
+      </div>
+      <div class="mode-title">Vibration Mode</div>
+      <div class="mode-desc">For hearing impaired — learn by touch pattern</div>
+    </div>
+  </div>
+
+  <div class="tab-row" id="tab-row">
+    <button class="tab active-t" onclick="setLesson('letters')" id="tab-letters">Letters</button>
+    <button class="tab"          onclick="setLesson('numbers')" id="tab-numbers">Numbers</button>
+    <button class="tab"          onclick="setLesson('words')"   id="tab-words">Words</button>
+  </div>
+
+  <div class="lesson-area">
+    <div class="lesson-label" id="lesson-label">Letters — Audio Mode</div>
+    <div class="progress-row" id="progress-row"></div>
+
+    <div class="big-letter">
+      <span id="main-char" class="audio-color">A</span>
+      <div class="word" id="word-hint">as in Apple</div>
+    </div>
+
+    <div class="vib-pattern" id="vib-pattern" style="display:none;"></div>
+    <div class="status-bar"  id="status-bar">Press Play to hear the letter</div>
+
+    <div class="btn-row">
+      <button id="btn-play" class="btn-play" onclick="playAction()">&#9654; Play</button>
+      <button onclick="prevItem()">&#8592; Prev</button>
+      <button onclick="nextItem()">Next &#8594;</button>
+    </div>
+  </div>
+
+  <div class="score-row">
+    <div class="score-card"><div class="val" id="s-current">1</div><div class="lbl">Current</div></div>
+    <div class="score-card"><div class="val" id="s-total">26</div><div class="lbl">Total</div></div>
+    <div class="score-card"><div class="val" id="s-done">0</div><div class="lbl">Done</div></div>
+  </div>
+
+  <div class="footer">
+    Developed by Hariharan J &nbsp;&middot;&nbsp; Prathyusha Engineering College &nbsp;&middot;&nbsp; 2023&ndash;2024
+  </div>
+</div>
+
+<script src="js/data.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
